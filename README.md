@@ -12,35 +12,34 @@ Ce projet est une application de gestion de tâches simple développée en utili
 
 2. Créez un environnement virtuel (recommandé) :
 
-python -m venv venv
+`python -m venv venv`
 
 3. Activez l'environnement virtuel (sur Windows) :
 
-venv\Scripts\activate
+`venv\Scripts\activate`
 
 Ou sur macOS/Linux :
 
-source venv/bin/activate
+`source venv/bin/activate`
 
 4. Installez les dépendances requises :
-
-pip install -r requirements.txt
+`
+pip install -r requirements.txt`
 
 5. Effectuez les migrations pour créer la base de données :
 
-La base de données étant déjà crée cela n'est pas neccéssaire
-python manage.py migrate
+La base de données étant déjà crée cela n'est pas neccéssaire mais la commande est
+`python manage.py migrate`
 
 6. Lancez le serveur de développement :
-
-python manage.py runserver
+  `python manage.py runserver`
 
 
 7. Accédez à l'application dans votre navigateur à l'adresse `http://localhost:8000/`.
 
 8. Identifiant de connexion.
-9. 
-Il est possible de s'enregistrer ou alors de se connecter avec les identifiants : Nom : max1 / Mot de passe : max123456
+ 
+Il est possible de s'enregistrer ou alors de se connecter avec les identifiants : `Nom : max1` / `Mot de passe : max123456`
 
 ## Contributeurs
 
