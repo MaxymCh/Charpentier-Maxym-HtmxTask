@@ -132,12 +132,15 @@ def edit_task(request, task_id):
 @login_required    
 @require_http_methods(['DELETE'])
 def delete_task(request, task_id):
+    referer_url = request.META.get('HTTP_REFERER')
     try:
         task = Task.objects.get(pk=task_id)
         task.delete()
     except Task.DoesNotExist:
         pass  # Gérer l'exception comme nécessaire
-
+    if("/get-task/" in referer_url):
+        print("rediriger vers all-tasks")
+        return HttpResponse(status=204)  # Retourner une réponse HTTP 204 (No Content)
     # Récupérer la liste mise à jour des tâches
     tasks_list = Task.objects.all() 
     paginator = Paginator(tasks_list, 5)

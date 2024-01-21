@@ -8,9 +8,14 @@
         <button hx-get="{%url 'edit-task' task.pk%}" class="btn btn-primary">
             Click To Edit
         </button>
-        <button hx-delete="{%url 'delete-task' task.pk%}" class="btn btn-danger">
+        <a href="{% url 'all-tasks' %}">        
+            <button hx-delete="{% url 'delete-task' task.pk %}"
+            class="btn btn-danger">
             Click To Delete
-        </button>      
+            </button>
+        </a>
+
+
     </div>
     <div id="user-list"  hx-swap-oob="true">
         <div hx-swap-oob="true" id="div-subscription-button">
@@ -45,6 +50,7 @@
 
 <script>
     htmx.config.useTemplateFragments = true;
+
 
 </script>
 </section>
