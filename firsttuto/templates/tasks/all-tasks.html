@@ -1,0 +1,7 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Tasks</h1>
+
+<div id="task-list" class="d-flex justify-content-between flex-column">
+  {% include 'tasks/display-tasks.html' %}
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+<!-- task_edit_form.html -->
+
+<form hx-put="{% url 'get-task' task.pk %}" hx-target="this" hx-swap="outerHTML">
+  <div>
+    <label>Description</label>
+    <input type="text" name="taskdescription" value="{{ task.description }}">
+  </div>
+  <button type="submit" class="btn">Submit</button>
+  <a href="{% url 'get-task' task.pk %}" class="btn">Cancel</a>
+</form>

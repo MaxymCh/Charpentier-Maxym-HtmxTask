@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Tasks</h1>
+    <form hx-post="{% url 'add-task' %}" hx-target="#task-list">
+        {% csrf_token %}
+        <input type="text" name="taskdescription" placeholder="Enter a description">
+        <button type="submit" class="btn btn-success" value="Add">Add Task</button>
+    </form>
+
+    <div id="task-list" class="d-flex justify-content-between">
+        {% include 'tasks/task-list.html' %}
+
+    </div>
+
+{% endblock %}

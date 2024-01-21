@@ -1,0 +1,24 @@
+h1{
+    color: green;
+}
+
+.error {
+    color: red;
+    font-size: 80px;
+    position: fixed; /* Position fixe au milieu de l'écran */
+    top: 50%; /* Centré verticalement */
+    left: 50%; /* Centré horizontalement */
+    transform: translate(-50%, -50%) rotate(0deg); /* Centrer et initialiser la rotation */
+    transition: transform 2s; /* Durée de l'animation de rotation */
+    animation: rotate 0.0001s infinite linear; /* Animation de 5 secondes, répétée indéfiniment, à vitesse constante */
+}
+
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+

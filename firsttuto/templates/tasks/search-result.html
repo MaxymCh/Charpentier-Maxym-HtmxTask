@@ -1,0 +1,17 @@
+{% if results %}
+    <p>Results</p>
+    <ul class="list-group-xs-12">
+        {% for task in results %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ task.description }}
+                <span class="badge bg success"
+                style = "cursor:pointer"
+                hx-post="{% url 'add-task' %}"
+                hx-vals='{"taskdescription": "{{ task.description }}" }'
+                hx-target="#task-list">Add</span>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No results available.</p>
+{% endif %}

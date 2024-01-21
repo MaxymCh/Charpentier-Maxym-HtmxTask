@@ -1,0 +1,51 @@
+{% extends 'base.html' %} 
+{% block content %}
+<section>
+    <h1>Task Details</h1>
+
+    <div hx-target="this" hx-swap="outerHTML">
+        <div><label>Description</label>: {{ task.description }}</div>
+        <button hx-get="{%url 'edit-task' task.pk%}" class="btn btn-primary">
+            Click To Edit
+        </button>
+        <button hx-get="/get-task/61/edit/" class="btn btn-danger">
+            Click To Delete
+        </button>      
+    </div>
+    <div id="user-list"  hx-swap-oob="true">
+        <div hx-swap-oob="true" id="div-subscription-button">
+            <button id="subscription-button"
+            hx-post="{% url 'inscription-task' task.pk %}"
+            hx-swap="innerHTML"
+            hx-target="#user-list"
+            class="btn btn-info">
+            {% if is_user_subscribed %}
+                Se désinscrire
+            {% else %}
+                S'inscrire
+            {% endif %}
+            </button>
+
+        </div>
+        
+        <h1>Nombre d'utilisateurs affecté : {{ nb_users }}</h1>
+        {% if nb_users > 0 %}
+            <h2>Utilisateurs affectés</h2>
+            {% for usertask in usertasks %}
+                <div>
+                    <li class="list-group-item justify-content-between">
+                        <div><label>Username</label>: {{ usertask.user.username }}</div>
+                        <div><label>Ordre</label>: {{ usertask.order }}</div>
+                    </li>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    
+
+<script>
+    htmx.config.useTemplateFragments = true;
+
+</script>
+</section>
+{% endblock %}

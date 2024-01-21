@@ -1,0 +1,10 @@
+<div hx-target="this" hx-swap="outerHTML">
+    <div><label>Description</label>: {{ task.description }}</div>
+    <button hx-get="{%url 'edit-task' task.pk%}" class="btn btn-primary">
+        Click To Edit
+    </button>
+    <button hx-get="/get-task/61/edit/" class="btn btn-danger">
+        Click To Delete
+    </button>
+
+</div>

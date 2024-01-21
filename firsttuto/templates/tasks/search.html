@@ -1,0 +1,15 @@
+<form>
+    <input
+        type="text"
+        name="search"
+        placeholder="Search"
+        hx-post="{% url 'search-task' %}"
+        hx-target="#results"
+        hx-trigger="keyup changed delay: 500ms"
+        class="form-control-sm mr-2"
+    />
+</form>
+
+<div id="results">
+    {% include 'tasks/search-result.html' %}
+</div>
