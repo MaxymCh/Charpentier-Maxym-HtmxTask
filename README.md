@@ -1,61 +1,47 @@
-Projet de Gestion de Tâches avec Django et htmx
+# Projet de Gestion de Tâches avec Django et htmx
+
 Ce projet est une application de gestion de tâches simple développée en utilisant le framework Django et la bibliothèque htmx. Il permet aux utilisateurs de créer, afficher, mettre à jour et supprimer des tâches.
 
-Fonctionnalités
-Création de tâches: Les utilisateurs peuvent créer de nouvelles tâches en spécifiant un titre et une description.
+## Fonctionnalités
 
-Affichage de tâches: Les tâches existantes sont affichées sous forme de liste, avec des détails tels que le titre, la description et l'état actuel.
+- **Fonctionnalités demandé dans le Rendu**: Ceux qui est attendu dans le TP est disponible dans l'onglet All Tasks.
 
-Mise à jour de tâches: Les utilisateurs peuvent mettre à jour le titre, la description et l'état d'une tâche existante en utilisant htmx pour des mises à jour en temps réel.
+## Configuration du Projet
 
-Suppression de tâches: Les utilisateurs peuvent supprimer une tâche en cliquant sur un bouton de suppression.
+1. Clonez le projet depuis le dépôt GitHub :
 
-Configuration du Projet
-Clonez le projet depuis le dépôt GitHub :
+2. Créez un environnement virtuel (recommandé) :
 
-bash
-Copy code
-git clone https://github.com/votre-utilisateur/projet-taches-django-htmx.git
-Accédez au répertoire du projet :
-
-bash
-Copy code
-cd projet-taches-django-htmx
-Créez un environnement virtuel (recommandé) :
-
-bash
-Copy code
 python -m venv venv
-Activez l'environnement virtuel (sur Windows) :
 
-bash
-Copy code
+3. Activez l'environnement virtuel (sur Windows) :
+
 venv\Scripts\activate
+
 Ou sur macOS/Linux :
 
-bash
-Copy code
 source venv/bin/activate
-Installez les dépendances requises :
 
-bash
-Copy code
+4. Installez les dépendances requises :
+
 pip install -r requirements.txt
-Effectuez les migrations pour créer la base de données :
 
-bash
-Copy code
+5. Effectuez les migrations pour créer la base de données :
+
+La base de données étant déjà crée cela n'est pas neccéssaire
 python manage.py migrate
-Lancez le serveur de développement :
 
-bash
-Copy code
+6. Lancez le serveur de développement :
+
 python manage.py runserver
-Accédez à l'application dans votre navigateur à l'adresse http://localhost:8000/.
 
-Utilisation de htmx
-L'intégration de htmx dans ce projet se trouve dans les templates HTML. Les actions telles que la mise à jour d'une tâche sont gérées en utilisant les attributs htmx tels que hx-get, hx-post, hx-trigger, etc. Pour plus de détails sur l'utilisation de htmx, consultez la documentation officielle : https://htmx.org/docs/
 
-Contributeurs
-Votre Nom (votre@email.com)
-N'hésitez pas à contribuer au projet en créant des pull requests ou en signalant des problèmes.
+7. Accédez à l'application dans votre navigateur à l'adresse `http://localhost:8000/`.
+
+8. Identifiant de connexion.
+9. 
+Il est possible de s'enregistrer ou alors de se connecter avec les identifiants : Nom : max1 / Mot de passe : max123456
+
+## Contributeurs
+
+- Charpentier Maxym
