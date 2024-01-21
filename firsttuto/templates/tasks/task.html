@@ -8,7 +8,7 @@
         <button hx-get="{%url 'edit-task' task.pk%}" class="btn btn-primary">
             Click To Edit
         </button>
-        <button hx-get="/get-task/61/edit/" class="btn btn-danger">
+        <button hx-delete="{%url 'delete-task' task.pk%}" class="btn btn-danger">
             Click To Delete
         </button>      
     </div>

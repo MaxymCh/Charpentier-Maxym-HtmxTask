@@ -79,16 +79,32 @@ def add_task(request):
 
 @login_required    
 @require_http_methods(['DELETE'])
-def delete_task(request, task_id):
+def delete_user_task(request, task_id):
     UserTask.objects.get(pk=task_id).delete()
     tasks = UserTask.objects.filter(user=request.user)
     reorder(request.user)
     return render(request, 'tasks/task-list.html', {'tasks': tasks})
 
+
+
+def search_task(request):
+    search_text = request.POST.get('search')
+    user_tasks = UserTask.objects.filter(user=request.user)
+    results = Task.objects.filter(description__icontains=search_text).exclude(description__icontains=user_tasks.values_list('task__description', flat=True))[:10]
+    print(results)
+    return render(request, 'tasks/search-result.html', {'results': results})
+
+
+def clear(request):
+    return HttpResponse('')
+
 from django.http import QueryDict
+from django.urls import reverse
+
 
 @login_required    
 def get_task(request, task_id):
+    print(task_id)
     task = Task.objects.get(pk=task_id)
     if task:     
         # Si la requête est de type PUT, on met à jour la description de la tâche
@@ -113,16 +129,22 @@ def edit_task(request, task_id):
         return render(request, 'tasks/task_edit_form.html', {'task': task})
     return HttpResponse('Task not found')
 
-def search_task(request):
-    search_text = request.POST.get('search')
-    user_tasks = UserTask.objects.filter(user=request.user)
-    results = Task.objects.filter(description__icontains=search_text).exclude(description__icontains=user_tasks.values_list('task__description', flat=True))[:10]
-    print(results)
-    return render(request, 'tasks/search-result.html', {'results': results})
+@login_required    
+@require_http_methods(['DELETE'])
+def delete_task(request, task_id):
+    try:
+        task = Task.objects.get(pk=task_id)
+        task.delete()
+    except Task.DoesNotExist:
+        pass  # Gérer l'exception comme nécessaire
 
-
-def clear(request):
-    return HttpResponse('')
+    # Récupérer la liste mise à jour des tâches
+    tasks_list = Task.objects.all() 
+    paginator = Paginator(tasks_list, 5)
+    
+    page_obj = paginator.get_page(1)
+    
+    return render(request, 'tasks/display-tasks.html', {'page_obj': page_obj})
 
 """def sort(request):
     res = request.POST.getlist('task_order')

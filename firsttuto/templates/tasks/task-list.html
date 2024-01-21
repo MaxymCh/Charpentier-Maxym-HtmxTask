@@ -16,7 +16,7 @@
                 {{ task.task.description }}
                 <span class="badge bg danger"
                 style="cursor : pointer"
-                hx-delete="{%url 'delete-task' task.pk%}"
+                hx-delete="{%url 'delete-user-task' task.pk%}"
                 hx-target = "#task-list"
                 hx-confirm="Are you sure you want to delete this task ?">x</span>
             </li>

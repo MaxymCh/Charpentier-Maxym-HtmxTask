@@ -16,13 +16,14 @@ urlpatterns = [
 htmx_views = [
     path('check_username', views.check_username, name="check_username"),
     path('add-task/', views.add_task, name="add-task"),
-    path('delete-task/<int:task_id>/', views.delete_task, name="delete-task"),
+    path('delete-user-task/<int:task_id>/', views.delete_user_task, name="delete-user-task"),
     path('search-task/', views.search_task, name="search-task"),
     path('clear/', views.clear, name="clear"),
     path('sort/', views.sort, name="sort"),
     path('load-more-tasks/', views.load_more_tasks, name='load-more-tasks'),
     path('edit-task/<int:task_id>/', views.edit_task, name="edit-task"),
     path('get-task/<int:task_id>/', views.get_task, name="get-task"),
+    path('delete-task/<int:task_id>/', views.delete_task, name="delete-task"),
     path('inscription-task/<int:task_id>/', views.inscription_task, name="inscription-task"),
 
 ]

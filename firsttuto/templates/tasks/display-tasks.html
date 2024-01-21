@@ -1,20 +1,19 @@
 {% for task in page_obj %}
-<a href="{%url 'get-task' task.pk%}">
 <div>
   <input type="hidden" name="task_order" value="{{ task.pk }}" />
   <li class="list-group-item justify-content-between">
+  <a href="{%url 'get-task' task.pk%}">
+
     {{ task.description }}
-    <span
-      class="badge bg danger"
+  </a>
+  <span
       style="cursor: pointer"
-      hx-delete="{%url 'delete-task' task.pk%}"
+      hx-delete="{% url 'delete-task' task.pk %}"
       hx-target="#task-list"
-      hx-confirm="Are you sure you want to delete this task ?"
-      >x</span
-    >
+      hx-confirm="Are you sure you want to delete this task?"
+    >x</span>
   </li>
 </div>
-</a>
 {% endfor %}
 
 {% if page_obj.has_next %}
